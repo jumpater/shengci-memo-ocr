@@ -1,0 +1,17 @@
+#!/usr/bin/expect
+
+set ans1 6
+set ans2 79
+
+spawn apt-get install -y python3
+expect {
+        -regexp ".*narrow.*"{
+                send "${ans1}\n"
+                exp_continue
+         }
+         -regexp ".*Geographic area.*"{
+                send "${ans2}\n"
+                exp_continue
+         }
+        }
+exit 0
