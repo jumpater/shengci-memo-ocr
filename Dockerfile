@@ -19,5 +19,5 @@ RUN mkdir /var/log/gunicorn
 RUN touch /var/log/gunicorn/gunicorn.log
 RUN useradd admin
 USER admin
-CMD gunicorn -w 2 -k uvicorn.workers.UvicornWorker --timeout 50
+CMD gunicorn hanzi-ocr:app -w 2 -k uvicorn.workers.UvicornWorker --timeout 50
 # CMD gunicorn --bind 0.0.0.0:$PORT hanzi-ocr:app -w 2 -k uvicorn.workers.UvicornWorker --timeout 50
