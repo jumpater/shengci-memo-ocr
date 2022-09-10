@@ -33,6 +33,16 @@ def read_img(img):
 app = FastAPI()
 
 
+@app.get("/")
+async def root():
+    return {"message": "This is api of hanzi-ocr"}
+
+
+@app.get("health")
+async def confirmHealth():
+    return {"message": "health was confirmed"}
+
+
 @app.post("/hanzi-ocr/")
 async def prediction(request: Request, file: bytes = File(...)):
     if request.method == "POST":
