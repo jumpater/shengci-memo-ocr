@@ -22,4 +22,4 @@ typing_extensions==4.1.1
 uvicorn[standard]
 watchgod==0.8
 websockets==10.2
-gunicorn
+gunicorn==20.1.0
