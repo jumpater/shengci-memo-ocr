@@ -35,12 +35,7 @@ app = FastAPI()
 
 @app.get("/")
 async def root():
-    return {"message": "This is api of hanzi-ocr"}
-
-
-@app.get("health")
-async def confirmHealth():
-    return {"message": "health was confirmed"}
+    return "This is api of hanzi-ocr"
 
 
 @app.post("/hanzi-ocr/")
