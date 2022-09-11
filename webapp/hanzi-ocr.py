@@ -47,7 +47,6 @@ async def prediction(request: Request, file: bytes = File(...)):
         exif = img._getexif()
         orientation = exif.get(0x112, 1)
         img = convert_image[orientation](img)
-        return f"img-format:{img.format}"
         text = read_img(img)
         stopWords = [
             "一",
@@ -59,6 +58,5 @@ async def prediction(request: Request, file: bytes = File(...)):
         for word in jieba.cut_for_search(text):
             if (re.match("^[\u4E00-\u9FFF]+", word) and word not in stopWords):
                 wordsList.append(word)
-        return ", ".join(wordsList)
-        # return json.dumps(wordsList)
+        return json.dumps(wordsList)
     return "No post request found"
