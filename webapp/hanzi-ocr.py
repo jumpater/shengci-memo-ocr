@@ -59,5 +59,6 @@ async def prediction(request: Request, file: bytes = File(...)):
         for word in jieba.cut_for_search(text):
             if (re.match("^[\u4E00-\u9FFF]+", word) and word not in stopWords):
                 wordsList.append(word)
-        return json.dumps(wordsList)
+        return ", ".join(wordsList)
+        # return json.dumps(wordsList)
     return "No post request found"
