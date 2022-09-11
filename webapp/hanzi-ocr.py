@@ -47,9 +47,8 @@ async def prediction(request: Request, file: bytes = File(...)):
         exif = img._getexif()
         orientation = exif.get(0x112, 1)
         img = convert_image[orientation](img)
-        print(f"img-format:{img.format}")
+        return f"img-format:{img.format}"
         text = read_img(img)
-        return text
         stopWords = [
             "一",
             "二",
