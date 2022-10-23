@@ -43,7 +43,7 @@ async def prediction(request: Request, file: bytes = File(...)):
     if request.method == "POST":
         image_stream = io.BytesIO(file)
         image_stream.seek(0)
-        img = Image.open(image_stream, formats=["JPEG", "PNG"])
+        img = Image.open(image_stream, formats=["JPEG", "JPG", "PNG","jpg","jpeg", "png"])
         exif = img._getexif()
         orientation = exif.get(0x112, 1)
         img = convert_image[orientation](img)
