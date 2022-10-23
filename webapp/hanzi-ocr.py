@@ -39,10 +39,10 @@ async def root():
 
 
 @app.post("/hanzi-ocr/")
-async def prediction(request: Request, file: bytes = File(...)):
+async def prediction(request: Request, file: bytes = File()):
     if request.method == "POST":
         image_stream = io.BytesIO(file)
-        image_stream.seek(0)
+#         image_stream.seek(0)
         img = Image.open(image_stream, formats=["JPEG","PNG"])
         exif = img._getexif()
         orientation = exif.get(0x112, 1)
