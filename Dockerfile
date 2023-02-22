@@ -19,4 +19,8 @@ RUN mkdir /var/log/gunicorn
 RUN touch /var/log/gunicorn/gunicorn.log
 RUN useradd admin
 USER admin
-#CMD gunicorn --bind 0.0.0.0:$PORT hanzi-ocr:app -w 2 -k uvicorn.workers.UvicornWorker --timeout 50
+
+# ↓for local debugging↓
+# EXPOSE 8000
+# CMD gunicorn --bind 0.0.0.0:8000 hanzi-ocr:app -w 2 -k uvicorn.workers.UvicornWorker --timeout 50\ 
+# --access-logfile /var/log/gunicorn/gunicorn.log
